@@ -1,7 +1,4 @@
-'''Read please:
-I imported os but I don't use it because I just put the csv file in the same folder as the main.py
-alternate: filename = os.path.join("Users","richard","Desktop","python-challenge","PyBank","budget_data.csv")
-'''
+
 
 import os
 import csv
