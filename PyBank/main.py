@@ -1,15 +1,18 @@
-
-
-import os
+#Section 1: Import necessary libraries
+import os #optional one, depends on locality of csv file you want to work with.
 import csv
 
-#access csv file.
+#######################
 
-
+#Section 2: access csv file, using the with block.
 with open("budget_data.csv") as csvfile:
     csvreader = csv.reader(csvfile, delimiter =',')
 
-#Create dictionary object to hold and manipulate csv file
+
+#######################
+
+#Section 3: Create dictionary object to hold and manipulate csv file.
+#Note: I am aware you could have done all of this without a dictionary in with the csv.reader
     bankDict = {}
 
 #iterate through the csv file and put it into the previous dictionary object.
@@ -33,6 +36,11 @@ with open("budget_data.csv") as csvfile:
 totalProfit.pop(0) 
 monthsList.pop(0)
 
+
+#######################
+
+#Section 4: Numerical Operations
+
 #set variables to iterate, since the (for .. in) statement uses str and not int type.
 counter = 0
 sumProfit =0
@@ -46,7 +54,8 @@ for index in totalProfit:
     numericalProfit.append(int(totalProfit[counter]))
     counter+=1
 
-#set up reversed dictionary for data manipulation.
+#set up reversed dictionary for data manipulation, and to find month related to min/max profit.
+#Don't ask me why I thought this was the most optimal solution.
 counterB=0
 avgDict = {}
 
@@ -65,9 +74,9 @@ while (counterB<counter):
 
 #average change per month
 aChange = sum(avgChange) / counter
-aChange=round(aChange,2)
+aChange= round(aChange,2)
 
-# this is me realizing the difference between a float and an integer.
+# this below is me realizing the difference between a float and an integer.
 # print(aChange,type(aChange))
 
 #remember, numericalProfit is an array.
@@ -77,8 +86,9 @@ minProfit = min(numericalProfit)
 monthMax = avgDict[maxProfit]
 monthMin = avgDict[minProfit]
 
+#######################
 
-#Putting it all together
+#Section 5: Putting it all together for output to terminal
 #Final Output will read:
 print(f'''Financial Analysis  
 ----------------------------  
@@ -88,7 +98,9 @@ Average Change: ${aChange}
 Greatest Increase in Profits: {monthMax}, (${maxProfit})  
 Greatest Decrease in Profits: {monthMin}, (${minProfit})''')
 
-#exporting to text file.
+#######################
+
+#Section 6: exporting to text file.
 #this with block should generate a text file called "financial_analysis.txt with the same terminal output when executing."
 with open("financial_analysis.txt", "w+") as out:
     out.write(f'''Financial Analysis  
@@ -99,7 +111,10 @@ Average Change: ${aChange}
 Greatest Increase in Profits: {monthMax}, (${maxProfit})  
 Greatest Decrease in Profits: {monthMin}, (${minProfit})''')
 
-#testing outputs
+
+#######################
+
+#Some testing outputs I put at the end for readability. Irrelevant to results.
 '''
 print(aChange) 
 print("\n")
