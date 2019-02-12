@@ -1,9 +1,6 @@
 {
 	"folders": [
 		{
-			"path": "/Users/richard/Desktop/SP Writing Code Analysis"
-		},
-		{
 			"path": "PyBank"
 		},
 		{
@@ -11,6 +8,9 @@
 		},
 		{
 			"path": "PyParagraph"
+		},
+		{
+			"path": "PyBoss"
 		},
 		{
 			"path": "/Users/richard/pythonstuff"
